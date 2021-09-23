@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+<div class="row">
+    <h1>Тестовое задание Focus Start</h1>
+    <label>Выберите изображение для загрузки</label>
+
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %}
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+                <label>Введите hex-код цвета</label>
+                <input type="text" name="hex" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Загрузить изображение" class="btn btn-info">
+        </p>
+    </form>
+
+    <div class="alert">
+        <p> {{bl_or_wh}} </p>
+        <p> {{hex_pixels}} </p>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+<!-- src="{{ url_for('static', filename='img.jpeg') }}" -->
+{% endblock %}
